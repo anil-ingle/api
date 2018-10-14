@@ -1,8 +1,8 @@
-package com.krushidjapi.dashbord;
+package com.krushidjapi.module.dashbord;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DashBordController {
+public class DashbordController {
 
 }
