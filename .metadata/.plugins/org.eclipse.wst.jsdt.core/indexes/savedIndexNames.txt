@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+/home/anil/Desktop/api/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-594742858.index
-2917785059.index
-4111978488.index
-1273954904.index
-2336273099.index
-4112338225.index
