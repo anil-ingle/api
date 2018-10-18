@@ -1,5 +1,7 @@
 package com.krushidj.module.dashbord;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,19 @@ public class DashbordServiceImpl implements DashbordService {
 	public void saveContact(Contact contact) {
 		dao.saveContact(contact);
 
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Contact> getContacts(Long id) throws Throwable {
+		List<Contact> list=null;
+		try {
+			list = dao.getContacts(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(list + "id" + id);
+		return list;
 	}
 }

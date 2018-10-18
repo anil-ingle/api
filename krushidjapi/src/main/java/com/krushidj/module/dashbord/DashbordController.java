@@ -1,13 +1,21 @@
 package com.krushidj.module.dashbord;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.krushidj.model.Contact;
 import com.krushidj.model.Employee;
+import com.krushidjapi.util.JsonUtil;
 
 @RestController
 //@RequestMapping("/")
@@ -47,6 +55,15 @@ public class DashbordController {
 		contact.setLoginId(1l);
 		contact.setActive(true);
 		service.saveContact(contact);
+
+	}
+
+	@RequestMapping(value = { "/getAll" }, method = RequestMethod.GET)
+	public ResponseEntity<String> getContacts(@RequestParam("id") Long id) throws Throwable {
+		String json = JsonUtil.convertJavaToJson(service.getContacts(id));
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		return new ResponseEntity<String>(json, responseHeaders, HttpStatus.CREATED);
 
 	}
 }

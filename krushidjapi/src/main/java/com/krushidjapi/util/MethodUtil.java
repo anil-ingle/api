@@ -8,10 +8,13 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.krushidj.module.exception.GlobalException;
 
+@Component
 public class MethodUtil<T> {
+
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public void save(T entity) throws Throwable {
@@ -42,23 +45,24 @@ public class MethodUtil<T> {
 
 	}
 
-	public List<T> getALlById(Object instance, Long id) throws Exception {
+	@SuppressWarnings("unchecked")
+	public List<T> getALlById(Long id) throws Exception {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			if (session != null) {
 				Criteria crit = session.createCriteria(Object.class);
-				crit.add(Restrictions.eq("description", "loginId"));
-
-				//crit.setProjection(Projections);
+				crit.add(Restrictions.eq("loginId", id));
+				return crit.list();
 
 			} else {
-				throw new Exception();
+				throw new GlobalException("An error occurred while getting Data. Please contact Support Team.");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
+			log.error("An error occurred while getting  Data", e);
+			throw new GlobalException("An error occurred while getting Data. Please contact Support Team.");
 		} finally {
 			if (session != null) {
 				session.flush();
@@ -66,7 +70,6 @@ public class MethodUtil<T> {
 			}
 		}
 
-		return null;
 	}
 
 }
