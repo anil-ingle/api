@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.krushidj.model.Contact;
 import com.krushidj.model.Employee;
-import com.krushidjapi.util.JsonUtil;
+import com.krushidj.util.JsonUtil;
 
 @RestController
 //@RequestMapping("/")

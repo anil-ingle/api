@@ -1,77 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:context="http://www.springframework.org/schema/context"
-xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
-   
-   <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
-   
-   <!-- View Resolvers -->
-   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-     <property name="prefix" value="/WEB-INF/pages/"/>
-     <property name="suffix" value=".jsp"/>
-   </bean>
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/krushidjapi"/>
-        <property name="username" value="root"/>
-        <property name="password" value="anil"/>
-        <property name="initialSize" value="1"/>
-        <property name="maxActive" value="30"/>
-        <property name="poolPreparedStatements" value="true"/>
-        <property name="maxOpenPreparedStatements" value="100"/>
-    </bean>
-    <!-- Hibernate Session Factory  -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="hibernateProperties">
-            <props>
-               <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.default_schema">krushidjapi</prop>
-            </props>
-        </property>
-        <!-- The packages that contain our Hibernate model classes -->
-        <property name="packagesToScan">
-            <list>
-                <value>com.krushidj.model</value>
-            </list>
-        </property>
-    </bean>
-   
-   <!-- <bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-		<property name="dataSource">
-			<bean
-				class="org.apache.commons.dbcp.BasicDataSource"
-				destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
-				p:url="jdbc:mysql://localhost:3306/krushidjapi" p:username="root"
-				p:password="anil" />
-		</property>
-		<property name="configLocation">
-			<value>classpath:hibernate.cfg.xml</value>
-		</property>
 
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.default_schema">krushidjapi</prop>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 
-			</props>
-		</property>
+	<!-- View Resolvers -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
 	</bean>
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/> <property 
+		name="url" value="jdbc:mysql://localhost:3306/krushidjapi"/> <property name="username" 
+		value="root"/> <property name="password" value="anil"/> <property name="initialSize" 
+		value="1"/> <property name="maxActive" value="30"/> <property name="poolPreparedStatements" 
+		value="true"/> <property name="maxOpenPreparedStatements" value="100"/> </bean> 
+		Hibernate Session Factory <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSource"/> <property name="hibernateProperties"> 
+		<props> <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+		<prop key="hibernate.show_sql">true</prop> <prop key="hibernate.default_schema">krushidjapi</prop> 
+		</props> </property> The packages that contain our Hibernate model classes 
+		<property name="packagesToScan"> <list> <value>com.krushidj.model.Contact</value> 
+		</list> </property> </bean> -->
 
-	Binds the one thread to on session in session factory
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory"
-			ref="sessionFactory" />
-	</bean> -->
-   <context:component-scan base-package="com.krushidj.module.dashbord"/>
-   
+
+	<context:component-scan
+		base-package="com.krushidj.module.dashbord" />
+
 </beans>   

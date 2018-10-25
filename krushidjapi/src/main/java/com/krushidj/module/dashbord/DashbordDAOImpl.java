@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.krushidj.module.exception.GlobalException;
-import com.krushidjapi.util.MethodUtil;
+import com.krushidj.util.MethodUtil;
 
 @Repository("dao")
 public class DashbordDAOImpl<T> implements DashbordDAO<T> {

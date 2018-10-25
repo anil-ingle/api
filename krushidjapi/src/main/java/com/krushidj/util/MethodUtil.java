@@ -1,4 +1,4 @@
-package com.krushidjapi.util;
+package com.krushidj.util;
 
 import java.util.List;
 
@@ -9,13 +9,12 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.krushidj.module.exception.GlobalException;
 
 public class MethodUtil<T> {
-	@Autowired
-	private SessionFactory sessionFactory;
+
+	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	{
 		System.out.println("bloack  " + sessionFactory);
 	}

@@ -1,3 +1,4 @@
+package com.krushidj.util;
 /*package com.krushidjapi.util;
 
 import java.io.Serializable;
