@@ -10,6 +10,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
    
    <import resource="service-beans.xml"/>
     <import resource="persistence-beans.xml"/>
+     <import resource="spring-context.xml"/>
    
    
 </beans>

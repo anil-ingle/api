@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 
@@ -23,17 +22,14 @@ public class Contact {
 	private String avatarPath;
 
 	@Type(type = "string")
-	@NotNull
 	@Column(name = "firstName", nullable = false)
 	private String firstName;
 
 	@Type(type = "string")
-	@NotNull
 	@Column(name = "lastName", nullable = false)
 	private String lastName;
 
 	@Type(type = "string")
-	@NotNull
 	@Column(name = "mobileNumber", nullable = false)
 	private String mobileNumber;
 

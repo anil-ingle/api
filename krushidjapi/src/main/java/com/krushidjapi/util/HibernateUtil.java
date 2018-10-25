@@ -19,24 +19,24 @@ public class HibernateUtil {
 		}
 	}
 
-	public static final SessionFactory getSessionFactory() {
-		if (sessionFactory == null) {
-			synchronized (HibernateUtil.class) {
-				if (sessionFactory == null) {
-					// loads configuration and mappings
-					Configuration configuration = new Configuration().configure();
-					// add Dashbord Entity classes
-			  //	configuration.addAnnotatedClass(com.krushidj.model.Employee.class);
-					configuration.addAnnotatedClass(com.krushidj.model.Contact.class);
-					ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-							.applySettings(configuration.getProperties()).build();
-					// builds a session factory from the service registry
-					sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-				}
-			}
-		}
-		return sessionFactory;
-	}
+	//public static final SessionFactory getSessionFactory() {
+//		if (sessionFactory == null) {
+//			synchronized (HibernateUtil.class) {
+//				if (sessionFactory == null) {
+//					// loads configuration and mappings
+//					Configuration configuration = new Configuration().configure();
+//					// add Dashbord Entity classes
+//			  //	configuration.addAnnotatedClass(com.krushidj.model.Employee.class);
+//					configuration.addAnnotatedClass(com.krushidj.model.Contact.class);
+//					ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+//							.applySettings(configuration.getProperties()).build();
+//					// builds a session factory from the service registry
+//					sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+//				}
+//			}
+//		}
+	//	return sessionFactory;
+//	}
 }
 
 //https://github.com/kishanjavatrainer/

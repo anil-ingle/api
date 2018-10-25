@@ -6,10 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "EMPLOYEE")
@@ -19,7 +16,6 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Size(min = 3, max = 50)
 	@Column(name = "NAME", nullable = false)
 	private String name;
 //
@@ -29,11 +25,9 @@ public class Employee {
 //	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 //	private LocalDate joiningDate;
 
-	@NotNull
 	@Column(name = "SALARY", nullable = false)
 	private int salary;
 
-	@NotEmpty
 	@Column(name = "SSN", unique = true, nullable = false)
 	private String ssn;
 

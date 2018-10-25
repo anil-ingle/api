@@ -3,6 +3,7 @@ package com.krushidj.module.dashbord;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.krushidj.module.exception.GlobalException;
@@ -12,6 +13,7 @@ import com.krushidjapi.util.MethodUtil;
 public class DashbordDAOImpl<T> implements DashbordDAO<T> {
 	// @Autowired
 	private MethodUtil<T> method = new MethodUtil<>();
+	
 
 	@Override
 	public void saveContact(T instance) {
