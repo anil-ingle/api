@@ -28,14 +28,25 @@ public class DashbordServiceImpl implements DashbordService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Contact> getContacts(Long id) throws Throwable {
-		List<Contact> list=null;
+		List<Contact> list = null;
 		try {
 			list = dao.getContacts(id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(list + "id" + id);
 		return list;
+	}
+
+	@Override
+	public void deleteContact(Long id) throws Throwable {
+		dao.deleteContact(id);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void updateContact(Contact contact) throws Throwable {
+		dao.updateContact(contact);
+
 	}
 }

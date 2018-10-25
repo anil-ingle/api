@@ -11,4 +11,8 @@ public interface DashbordService {
 	public void saveContact(Contact contact) throws Throwable;
 
 	public List<Contact> getContacts(Long id) throws Throwable;
+
+	public void deleteContact(Long id) throws Throwable;
+
+	public void updateContact(Contact contact) throws Throwable;
 }

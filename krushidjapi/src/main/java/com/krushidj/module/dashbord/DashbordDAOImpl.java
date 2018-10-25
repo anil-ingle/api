@@ -47,4 +47,10 @@ public class DashbordDAOImpl<T> implements DashbordDAO<T> {
 		}
 	}
 
+	@Override
+	public void deleteContact(Long id) throws Throwable {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
