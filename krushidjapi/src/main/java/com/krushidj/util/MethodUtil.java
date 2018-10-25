@@ -9,18 +9,19 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import com.krushidj.module.exception.GlobalException;
 
-public class MethodUtil<T> {
-
-	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-	{
-		System.out.println("bloack  " + sessionFactory);
-	}
-
+@Component
+@ComponentScan(basePackages= {"com.krushidj"})
+public class MethodUtil<T> implements Util<T> {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
+	@Override
 	public void save(T entity) throws Throwable {
 		Session session = null;
 		Transaction txn = null;
@@ -52,7 +53,8 @@ public class MethodUtil<T> {
 
 	}
 
-	public void deleteById(T entity) throws Throwable {
+	@Override
+	public void update(T entity) throws Throwable {
 		Session session = null;
 		Transaction txn = null;
 		try {
@@ -60,7 +62,7 @@ public class MethodUtil<T> {
 			txn = session != null ? session.beginTransaction() : null;
 			if (session != null && txn != null) {
 
-				session.save(entity);
+				session.update(entity);
 				txn.commit();
 			} else {
 				throw new GlobalException("An error occurred while saving . Please contact Support Team.");
@@ -81,6 +83,7 @@ public class MethodUtil<T> {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<T> getALlById(Long id) throws Throwable {
 		System.out.println("factory " + sessionFactory);
 		Session session = null;
@@ -89,6 +92,7 @@ public class MethodUtil<T> {
 			if (session != null) {
 				Criteria crit = session.createCriteria(Object.class);
 				crit.add(Restrictions.eq("loginId", id));
+				crit.add(Restrictions.eq("active", true));
 				return crit.list();
 
 			} else {

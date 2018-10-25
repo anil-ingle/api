@@ -3,37 +3,48 @@ package com.krushidj.module.dashbord;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.krushidj.module.exception.GlobalException;
-import com.krushidj.util.MethodUtil;
+import com.krushidj.util.Util;
 
 @Repository("dao")
 public class DashbordDAOImpl<T> implements DashbordDAO<T> {
-	// @Autowired
-	private MethodUtil<T> method = new MethodUtil<>();
-	
+	@Autowired
+	private Util<T> util;
 
 	@Override
-	public void saveContact(T instance) {
+	public void saveContact(T instance) throws Throwable {
 
 		try {
-			method.save(instance);
+			util.save(instance);
 		} catch (Throwable e) {
 			e.printStackTrace();
+			throw new GlobalException("An error occurred while saving . Please contact Support Team.");
 		}
 	}
 
 	@Override
 	public List<T> getContacts(long id) throws Throwable {
 		try {
-			return method.getALlById(id);
+			return util.getALlById(id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
-			throw new GlobalException("error");
+			throw new GlobalException("An error occurred while getting Contacts . Please contact Support Team.");
 
 		}
 	}
+
+	@Override
+	public void updateContact(T instance) throws Throwable {
+		try {
+			util.update(instance);
+			;
+		} catch (Exception e) {
+			throw new GlobalException("An error occurred while update Contacts . Please contact Support Team.");
+
+		}
+	}
+
 }
