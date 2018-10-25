@@ -20,7 +20,7 @@ public class DashbordServiceImpl implements DashbordService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void saveContact(Contact contact) {
+	public void saveContact(Contact contact) throws Throwable {
 		dao.saveContact(contact);
 
 	}

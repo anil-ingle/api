@@ -1,7 +1,5 @@
 package com.krushidj.module.dashbord;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,7 +34,7 @@ public class DashbordController {
 	}
 
 	@RequestMapping(value = { "/test" }, method = RequestMethod.GET)
-	public void test() {
+	public void test() throws Throwable {
 //		Employee employee = new Employee();
 //		employee.setName("anil ingle");
 //		employee.setSalary(Integer.parseInt("784"));

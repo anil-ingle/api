@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.krushidj.module.exception.GlobalException;
-import com.krushidj.util.Util;
+import com.krushidj.util.MethodUtil;
 
 @Repository("dao")
 public class DashbordDAOImpl<T> implements DashbordDAO<T> {
 	@Autowired
-	private Util<T> util;
+	private MethodUtil<T> util;
 
 	@Override
 	public void saveContact(T instance) throws Throwable {

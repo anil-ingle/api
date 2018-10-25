@@ -15,13 +15,12 @@ import org.springframework.stereotype.Component;
 import com.krushidj.module.exception.GlobalException;
 
 @Component
-@ComponentScan(basePackages= {"com.krushidj"})
-public class MethodUtil<T> implements Util<T> {
+@ComponentScan(basePackages = { "com.krushidj" })
+public class MethodUtil<T>  {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	@Override
 	public void save(T entity) throws Throwable {
 		Session session = null;
 		Transaction txn = null;
@@ -53,7 +52,6 @@ public class MethodUtil<T> implements Util<T> {
 
 	}
 
-	@Override
 	public void update(T entity) throws Throwable {
 		Session session = null;
 		Transaction txn = null;
@@ -83,7 +81,6 @@ public class MethodUtil<T> implements Util<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<T> getALlById(Long id) throws Throwable {
 		System.out.println("factory " + sessionFactory);
 		Session session = null;
