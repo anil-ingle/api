@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.krushidj.module.exception.GlobalException;
 import com.krushidj.util.MethodUtil;
 
 @Repository("dao")
@@ -15,42 +14,23 @@ public class DashbordDAOImpl<T> implements DashbordDAO<T> {
 
 	@Override
 	public void saveContact(T instance) throws Throwable {
-
-		try {
-			util.save(instance);
-		} catch (Throwable e) {
-			e.printStackTrace();
-			throw new GlobalException("An error occurred while saving . Please contact Support Team.");
-		}
+		util.save(instance);
 	}
 
 	@Override
 	public List<T> getContacts(long id) throws Throwable {
-		try {
-			return util.getALlById(id);
-		} catch (Exception e) {
-
-			e.printStackTrace();
-			throw new GlobalException("An error occurred while getting Contacts . Please contact Support Team.");
-
-		}
+		return util.getALlById(id, "loginId");
 	}
 
 	@Override
 	public void updateContact(T instance) throws Throwable {
-		try {
-			util.update(instance);
-			;
-		} catch (Exception e) {
-			throw new GlobalException("An error occurred while update Contacts . Please contact Support Team.");
-
-		}
+		util.update(instance);
 	}
 
 	@Override
-	public void deleteContact(Long id) throws Throwable {
-		// TODO Auto-generated method stub
-		
+	public void deleteContact(String tableName,Long id) throws Throwable {
+		util.delete(tableName, id);
+
 	}
 
 }

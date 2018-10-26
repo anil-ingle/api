@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.krushidj.model.Contact;
 import com.krushidj.model.Employee;
+import com.krushidj.util.TableConstant;
 
 @Service("service")
 public class DashbordServiceImpl implements DashbordService {
@@ -39,7 +40,7 @@ public class DashbordServiceImpl implements DashbordService {
 
 	@Override
 	public void deleteContact(Long id) throws Throwable {
-		dao.deleteContact(id);
+		dao.deleteContact(TableConstant.Contact, id);
 
 	}
 

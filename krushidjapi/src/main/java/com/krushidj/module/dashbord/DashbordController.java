@@ -21,25 +21,30 @@ public class DashbordController {
 	@Autowired
 	DashbordServiceImpl service;
 
-	@RequestMapping(value = { "/contact" },method = RequestMethod.POST)
-	public void saveContact(@RequestBody Contact contact) throws Throwable {
+	@RequestMapping(value = { "/contact" }, method = RequestMethod.POST)
+	public ResponseEntity<String> saveContact(@RequestBody Contact contact) throws Throwable {
 		service.saveContact(contact);
-
+		HttpHeaders responseHeaders = new HttpHeaders();
+		return new ResponseEntity<String>("", responseHeaders, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = { "/contact" },method = RequestMethod.DELETE)
-	public void deleteContact(@RequestParam("id") Long id) throws Throwable {
+	@RequestMapping(value = { "/contact" }, method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteContact(@RequestParam("id") Long id) throws Throwable {
+
 		service.deleteContact(id);
-
+		HttpHeaders responseHeaders = new HttpHeaders();
+		return new ResponseEntity<String>("", responseHeaders, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = { "/contact" },method = RequestMethod.PUT)
-	public void updateContact(@RequestBody Contact contact) throws Throwable {
+	@RequestMapping(value = { "/contact" }, method = RequestMethod.PUT)
+	public ResponseEntity<String> updateContact(@RequestBody Contact contact) throws Throwable {
+		HttpHeaders responseHeaders = new HttpHeaders();
 		service.updateContact(contact);
+		return new ResponseEntity<String>("", responseHeaders, HttpStatus.CREATED);
 
 	}
 
-	@RequestMapping(value = { "/contact" },method = RequestMethod.GET)
+	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
 	public ResponseEntity<String> getContacts(@RequestParam("id") Long id) throws Throwable {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);

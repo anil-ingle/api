@@ -9,6 +9,6 @@ public interface DashbordDAO<T> {
 
 	public List<T> getContacts(long id) throws Throwable;
 
-	public void deleteContact(Long id) throws Throwable;
+	public void deleteContact(String tableName, Long id) throws Throwable;
 
 }
