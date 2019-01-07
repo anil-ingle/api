@@ -1,5 +1,5 @@
 # api
-# Krushidj Projects
+# Krushidj Projects.
 
 GitHub Repository for all the projects on [krushidj](https://www.github.com/krushidj)
 
